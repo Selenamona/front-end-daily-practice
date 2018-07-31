@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+.triangle {
+  position: relative;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  overflow: hidden;
+}
+.triangle:after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  display: inline-block;
+  border-top: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 4px solid #ddd;
+}
+
+.arrow {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  transform: rotate(45deg);
+}
+
+.close {
+  position: relative;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+}
+.close:before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 6px;
+  width: 12px;
+  border-top: 1px solid #ddd;
+  transform: rotate(45deg);
+}
+.close:after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 6px;
+  width: 12px;
+  border-top: 1px solid #ddd;
+  transform: rotate(-45deg);
+}
+
+.text {
+	border:1px solid #f10;
+	width: 500px;
+	height: 200px;
+}
+	</style>
+</head>
+<body>
+	<!-- <p class="close"></p>
+	<p class="arrow"></p>
+	<p class="triangle"></p>
+	<p class="close"></p> -->
+	<!-- <table border="1" cellspacing="0" cellpadding="5" style="text-align:center;font:12px arial;">
+		<thead>
+			<th>申请号</th>
+			<th>进入队列时间</th>
+			<th>客户姓名</th>
+			<th>状态</th>
+			<th>产品名称</th>
+			<th>队列</th>
+			<th>上次处理人</th>
+		</thead>
+		<tbody>
+			<tr>
+				<td>201709120000037</td>
+				<td>2017-09-12 15:08:50</td>
+				<td>申亚枝</td>
+				<td>7号岗审核中</td>
+				<td>CY-经营性租赁测试产品-09-04</td>
+				<td>待办理</td>
+				<td>朱亮(易鑫)</td>
+			</tr>
+		</tbody>
+	</table>	
+	<table border="1" cellspacing="0" cellpadding="5" style="text-align:center;font:12px arial;"> <thead> <th>申请号</th><th>进入队列时间</th> <th>客户姓名</th> <th>状态</th> <th>产品名称</th> <th>队列</th> <th>上次处理人</th> </thead> <tbody>
+	<tr><td>2014010</td><td>2017-08-17 17:55:53</td> <td>错错错</td> <td>7号岗审核中</td> <td>朗动经营性租赁1</td> <td>待办理</td> <td></td>&nbsp;</tr>
+	<tr><td>2014010</td><td>2017-08-17 17:55:53</td> <td>错错错</td> <td>7号岗审核中</td> <td>朗动经营性租赁1</td> <td>待办理</td> <td></td>&nbsp;</tr>
+	<tr><td>2014010</td><td>2017-08-17 17:55:53</td> <td>错错错</td> <td>7号岗审核中</td> <td>朗动经营性租赁1</td> <td>待办理</td> <td></td>&nbsp;</tr>
+	<tr><td>2014010</td><td>2017-08-17 17:55:53</td> <td>错错错</td> <td>7号岗审核中</td> <td>朗动经营性租赁1</td> <td>待办理</td> <td></td>&nbsp;</tr>
+	</tbody> </table> -->
+
+	<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> -->
+	<!-- <p class="img-thumbnail">预览图</p>
+	<p class="file-upload">上传图片</p>
+
+<div class="container">
+	<p >
+		<input type="file" id="picture" onchange="picture(event)">
+	</p>
+	<p >
+		<img src="" alt="" class="hide">
+	</p>
+</div> -->
+
+	<!-- <table border="1" cellspacing="0" cellpadding="5" style="text-align:center;font:12px arial;"> 
+		<thead>
+			<th>申请号</th>&nbsp;
+			<th>进入队列时间</th> 
+			<th>客户姓名</th>
+			<th>状态</th> 
+			<th>产品名称</th> 
+			<th>队列</th>
+			<th>上次处理人</th>
+		</thead> 
+		<tbody>
+			<tr>&nbsp;
+				<td>2014010</td>&nbsp;
+				<td>2017-08-17 17:55:53</td> 
+				<td>错错错</td> <td>7号岗审核中</td>
+				<td>朗动经营性租赁1</td> 
+				<td>待办理</td>
+				<td></td>&nbsp;</tr>
+			<tr>&nbsp;
+				<td>2014010</td>&nbsp;
+				<td>2017-08-17 17:55:53</td> 
+				<td>错错错</td> <td>7号岗审核中</td> 
+				<td>朗动经营性租赁1</td> 
+				<td>待办理</td> 
+				<td></td>&nbsp;</tr>
+			<tr>&nbsp;
+				<td>2014010</td>&nbsp;
+				<td>2017-08-17 17:55:53</td> 
+				<td>错错错</td> 
+				<td>7号岗审核中</td> 
+				<td>朗动经营性租赁1</td> 
+				<td>待办理</td> 
+				<td></td>&nbsp;</tr>
+			<tr>&nbsp;
+				<td>2014010</td>&nbsp;
+				<td>2017-08-17 17:55:53</td> 
+				<td>错错错</td> 
+				<td>7号岗审核中</td> 
+				<td>朗动经营性租赁1</td> 
+				<td>待办理</td> 
+				<td></td>&nbsp;</tr>
+		</tbody>
+	</table> -->
+
+	<button id="refresh">refresh element</button>
+	<div id="root"></div>
+</body>
+
+<!-- <script src="./js.js"> -->
+
+
+<!-- </script> -->
+
+<script src="./virtualDOM.js">
+</script>
+
+</html>
