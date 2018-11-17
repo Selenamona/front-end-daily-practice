@@ -152,3 +152,17 @@
 
     // fn(15)
 
+
+function doSth(){
+    console.log(this);
+}
+
+let btn = document.getElementById("test");
+
+btn.onclick = doSth;
+
+btn.onclick = function(){
+    doSth();
+}
+
+doSth();

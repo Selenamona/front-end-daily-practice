@@ -156,16 +156,93 @@
 		</tbody>
 	</table> -->
 
-	<button id="refresh">refresh element</button>
-	<div id="root"></div>
+	<!-- <button id="refresh">refresh element</button>
+	<div id="root"></div> -->
+	<!-- <button id='test'></button> -->
+
+
+<table border="1" cellspacing="0" style="border-color:#ddd;">
+	<thead style="background: #f5f5f5;height: 30px;">
+		<tr align="center" style="height: 44px;">
+			<th width="100">任务分类</th>
+			<th width="280">任务/订单编号</th>
+			<th width="220">买号/商品信息</th>
+			<th width="220">商品价格/任务佣金</th>
+			<th width="232">任务状态</th> 
+		</tr>
+	</thead>
+	<tbody style="text-align: center;"> 
+		<tr>
+			<td>销量任务</td>
+			<td>
+				<p class="fpgl-td-rw">
+					任务编号：V201810261106011954010
+					<b style="color: Red">(淘宝APP自然搜索)</b>
+				</p>
+				订单编号：238334124929633125                                        
+			</td>
+			<td class="fpgl-td-zs">
+				<p class="fpgl-td-rw">买号：最初的我们娥</p>
+				<p class="fpgl-td-rw">
+					<strong>
+						<a href="javascript:viod(0)" onclick="LookBuyNumberInfo(6805)" style="color: #5ca7f5">
+							查看买号信息
+						</a>
+					</strong>
+				</p>       
+				<p class="fpgl-td-rw">
+					店铺名称：奈斯服饰
+				</p>
+				<p class="fpgl-td-rw">
+					<strong>
+						<a href="javascript:viod(0)" onclick="GetTaskDatailInfo('869450')" style="color: #5ca7f5">
+							查看任务详情
+						</a>
+					</strong> 
+					<strong style="margin-left: 20px">
+						<a href="javascript:viod(0)" onclick="EditTaskRemark(869450)" style="color: #5ca7f5">
+							修改备注
+						</a>
+					</strong>
+				</p>
+			</td>
+			<td class="fpgl-td-zs">
+				<p class="fpgl-td-rw">
+					商品价格：899 元
+				</p>
+				<p class="fpgl-td-rw">
+					任务佣金：20.00 元
+				</p>
+				<p class="fpgl-td-rw">
+					转账方式：<em style="color: Red">自行转账</em>
+				</p>  
+			</td>
+			<td class="fpgl-td-zs">
+				<p class="fpgl-td-rw" style="text-align: center">
+					<strong>
+						<a href="javascript:void(0)" onclick="ShowOptLog(869450)" style="color: #5ca7f5">
+							待完成
+						</a>
+					</strong>
+				<p class="fpgl-td-rw">
+					<strong>发布时间：</strong>2018/10/26 19:00:00
+				</p>
+				<p class="fpgl-td-rw">
+					<strong>接手时间：</strong>2018/10/26 20:06:18
+				</p>       
+			</td> 
+		</tr>
+	</tbody>
+</table>
 </body>
+
 
 <!-- <script src="./js.js"> -->
 
 
 <!-- </script> -->
 
-<script src="./virtualDOM.js">
+<script src="./js.js">
 </script>
 
 </html>
