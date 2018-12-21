@@ -152,17 +152,24 @@
 
     // fn(15)
 
+// ----------------------
+// function doSth(){
+//     console.log(this);
+// }
 
-function doSth(){
-    console.log(this);
-}
+// let btn = document.getElementById("test");
 
-let btn = document.getElementById("test");
+// btn.onclick = doSth;
 
-btn.onclick = doSth;
+// btn.onclick = function(){
+//     doSth();
+// }
 
-btn.onclick = function(){
-    doSth();
-}
+// doSth();
 
-doSth();
+// -------------------------test
+
+[1,2,3,4].reduce(function(a,b,c,d){
+    console.log(a,b,c,d);
+    return a+b;
+})
