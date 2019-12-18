@@ -212,27 +212,58 @@
 // }  
 // console.log(aaa(703));
 
+// var convertToTitle = function(n) {
+//     var arr = [];
+//     var res = ""; 
+//     let letters = "ZABCDEFGHIJKLMNOPQRSTUVWXY" 
+//     let letters2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
+//     while (n>0) {
+//         if(n<26){
+//             arr.push(letters[n%26]);
+//             n = 0;
+//         }else{
+//             arr.push(letters[(n-1)%26]); 
+//             n = Math.floor((n)/26);
+//         }
+//     }
+//     console.log(arr);
+//     arr.reverse();
+//     for (let i = 0; i < arr.length; i++) {
+//         res += arr[i];
+//     } 
+//     console.log(res);
+// };
+// convertToTitle(53);
 
-var convertToTitle = function(n) {
-    var arr = [];
-    var res = ""; 
-    let letters = "ZABCDEFGHIJKLMNOPQRSTUVWXY" 
-    let letters2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
-    while (n>0) {
-        if(n<26){
-            arr.push(letters[n%26]);
-            n = 0;
-        }else{
-            arr.push(letters[(n-1)%26]); 
-            n = Math.floor((n)/26);
+var lengthOfLongestSubstring = function(s) {
+    var startIndex = 0;
+    var maxLength = 1;
+    var maxLengthLs = 1;
+    var str = "";
+    for(var i=1; i<s.length; i++){
+        var ls = true;
+        for (let j = 0; j < str.length; j++) {
+           if(s[i]==str[j]){
+               ls = false;
+           }
+        } 
+        if(!ls){
+            console.log(1+"eeee"); 
+            maxLengthLs = i-1-startIndex;
+            startIndex = i;
+        } else {
+            console.log(2+"eeee"); 
+            str = s.substr(startIndex,i+1)
+            maxLengthLs = i - startIndex;
         }
-    }
-    console.log(arr);
-    arr.reverse();
-    for (let i = 0; i < arr.length; i++) {
-        res += arr[i];
+        if(maxLengthLs > maxLength){
+            maxLength = maxLengthLs;
+        }    
     } 
-    console.log(res);
+    console.log(maxLength);
 };
-convertToTitle(53);
+lengthOfLongestSubstring("abcabcbb");
+
+
+
 // // -----------算法测试 end-----------------
