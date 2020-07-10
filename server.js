@@ -4,19 +4,19 @@
 
 // http 服务器
 
-// const http = require('http');
-// const hostname = '127.0.0.1';
-// const port = 3000;
-// const server = http.createServer((req, res) => {
-// res.statusCode = 200;
+const http = require('http');
+const hostname = '192.168.157.1';
+const port = 133;
+const server = http.createServer((req, res) => {
+res.statusCode = 200;
   
-//   res.setHeader('Content-Type', 'text/plain');
-//   res.end('Hello World\n');
-//   console.log("服务器启动成功")
-// });
-// server.listen(port, hostname, () => {
-//   console.log(`Server running at http://${hostname}:${port}/`);
-// });
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello World\n');
+  console.log("服务器启动成功")
+});
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
 
 
 // var http = require('http');//引入 http 模块
@@ -36,8 +36,8 @@
 //     });
 //     res.write('这是正文部分');//显示给客户端
 //     res.end();
-// }).listen(7777); // 监听端口号
-// console.log('Server is running at http://127.0.0.1:7777/');
+// }).listen(80); // 监听端口号
+// console.log('Server is running at http://127.0.0.1:80/');
 
 // 文件服务器
 // var
