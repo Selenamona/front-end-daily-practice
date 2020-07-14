@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./node_modules/reveal.js/dist/reveal.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section
+          data-background-image="./img/z1.png"
+          data-background-opacity=".4"
+        >
+          <h1>趣谈前端</h1>
+          <p>徐小夕</p>
+        </section>
+        <section>
+          <section data-transition="fade" data-background-color="orange">
+            <h1>趣谈前端 Javascript</h1>
+          </section>
+          <section data-transition="convex" data-background-color="green">
+            <h1>趣谈前端 Vue</h1>
+          </section>
+          <section data-transition="concave" data-background-color="#61dafb">
+            <h1>趣谈前端 React</h1>
+          </section>
+          <section data-transition="zoom" data-background-color="#b32535">
+            <h1>趣谈前端 Angular</h1>
+          </section>
+        </section>
+        <section>
+          <h1>NodeJS</h1>
+          <pre><code data-trim data-noescape>
+          const fs = require('fs')
+          const Koa = require('koa')
+          const app = new Koa()
+          </code></pre>
+        </section>
+        <section>
+          <h3>设计模式</h3>
+          <p class="fragment">观察者模式</p>
+          <p class="fragment">工厂模式</p>
+          <p class="fragment">迭代器模式</p>
+        </section>
+        <section>
+          <h4>数据结构与算法</h4>
+        </section>
+      </div>
+    </div>
+
+    <script src="./node_modules/reveal.js/dist/reveal.js"></script>
+    <script src="./node_modules/reveal.js/plugin/notes/notes.js"></script>
+    <script src="./node_modules/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="./node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
