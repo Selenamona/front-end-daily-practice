@@ -1,11 +1,18 @@
-import san from 'san';
-import {router} from 'san-router';
-import San from './app.san';
+import Vue from 'vue';
+import VueRouter from 'vue-router'
 
-console.log('hello webpack  San');
+import Home from './home.vue';
 
-//这是控制路由，引入San组件  不要问我怎么知道，看官方demo学来的。这个东西坑了我好久
-router.add({rule: '/', Component: San, target: '#app'});
+console.log('hello webpack');
 
-// 一定要记得启动
-router.start()
+const routes = [{ path: '/', component: Home }];
+
+Vue.use(VueRouter)
+
+const router = new VueRouter({
+  routes,
+});
+
+new Vue({
+  router,
+}).$mount('#app');
