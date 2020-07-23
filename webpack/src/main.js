@@ -1,5 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router'
+import test from './routers/index'
+console.log("test", test)
 
 import Home from './home.vue';
 
