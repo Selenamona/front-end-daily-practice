@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canvas 图片压缩</title>
+</head>
+
+<body>
+  <p>选择图片</p>
+  <input type="file" onchange="selectImg()">
+  <p>原图</p>
+  <div class="originImg"></div>
+  <p>压缩后图片</p>
+  <div class="dealImg"></div>
+</body>
+
+</html>
+
+<script>
+  const oWrap = document.querySelectorAll(".originImg")[0];
+  const dWrap = document.querySelectorAll(".dealImg")[0];
+
+  const imgOrigin = document.createElement("img");
+  const imgDealed = document.createElement("img");
+
+  /** 选择图片 */
+  function selectImg() {
+    const e = event || window.event;
+    const file = e.target.files[0];
+    console.log("selectImg -> file", file)
+    console.log("压缩前大小：", `${file.size / 1024 / 1024}M`, `${file.size / 1024}KB`);
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      let imgUrl = this.result; // base64格式图片的src
+      imgOrigin.src = imgUrl;
+      imgOrigin.width = 600;
+      oWrap.appendChild(imgOrigin);
+      let img = new Image();
+      img.src = imgUrl;
+      img.onload = function () {
+        compressImg(img, (dataURL) => {
+          imgDealed.src = dataURL;
+          imgDealed.width = 600;
+          console.log("压缩后大小：", `${getImgSize(dataURL)/1024}M`, `${getImgSize(dataURL)}KB`);
+          dWrap.appendChild(imgDealed);
+        })
+      }
+    };
+
+    /** 压缩图片 */
+    function compressImg(img, callback) {
+      let canvas = document.createElement('canvas');
+      let ctx = canvas.getContext('2d');
+      let width = img.width;
+      let height = img.height;
+      canvas.width = width;
+      canvas.height = height;
+      ctx.drawImage(img, 0, 0, width, height);
+      // 21M 压缩至 10M； 14M 压缩至 1M； 11M 压缩至 0.5M； 5M 压缩至 0.6M 
+      let dataURL = canvas.toDataURL("image/jpeg", 0.7);
+      callback ? callback(dataURL) : null;
+    }
+
+    /** 获取base64图片大小 */
+    function getImgSize(base64url) {
+      var str = base64url.replace('data:image/jpeg;base64,', '');
+      var strLength = str.length;
+      var fileLength = parseInt(strLength - (strLength / 8) * 2);
+      // 由字节转换为KB
+      return parseInt(fileLength / 1024);
+    }
+  }
+</script>
