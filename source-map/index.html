@@ -1,0 +1,81 @@
+<!-- 用于解析小程序开发管理-运维中心-错误日志的错误内容
+1、下载线上版本 Source Map 文件
+2、运行本页面
+3、查看小程序后台日志错误提示，将相应的报错行数复制到页面 line:column，例如找到 app-server.js 的 1750:773
+4、选择下载好的 Map 文件，查询即可
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SourceMap 查看工具</title>
+    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.js"></script>
+    <script src="https://unpkg.com/source-map@0.7.3/dist/source-map.js"></script>
+    <script>
+        sourceMap.SourceMapConsumer.initialize({
+            "lib/mappings.wasm": "https://unpkg.com/source-map@0.7.3/lib/mappings.wasm"
+        });
+    </script>
+</head>
+<body>
+<form id="myForm">
+    <p>
+        <label for="line-column">line:column </label><input id="line-column" name="line-column">
+    </p>
+    <p>
+        <label for="sourceMapFile">sourceMapFile </label><input id="sourceMapFile" type="file" name="sourceMapFile">
+    </p>
+    <button type="submit" name="submit">确定</button>
+</form>
+<table id="result" border="1" cellspacing="0" cellpadding="10">
+    <tr>
+        <th>line:column</th>
+        <th> ==></th>
+        <th>source</th>
+        <th>line</th>
+        <th>column</th>
+        <th>name</th>
+    </tr>
+    <!--<tr>-->
+    <!--<td>line:column</td><td> ==> </td><td>line</td><td>column</td><td>source</td><td>name</td>-->
+    <!--</tr>-->
+</table>
+<script>
+    $(function () {
+        const form = $('#myForm');
+        form.on('submit', function (e) {
+            e.preventDefault();
+            const dataArray = form.serializeArray();
+            const dataObj = dataArray.reduce((obj, item) => {
+                obj[item.name] = item.value;
+                return obj;
+            }, {});
+            let [line, column] = dataObj['line-column'].split(':');
+
+            // 读取文件
+            let file = $('#sourceMapFile').get(0).files[0];
+            const fileReader = new FileReader();
+            fileReader.onloadend = function () {
+                const rawSourceMap = fileReader.result;
+                // 查找
+                sourceMap.SourceMapConsumer.with(rawSourceMap, null, consumer => {
+                    const result = consumer.originalPositionFor({
+                        source: "./",
+                        line: +line,
+                        column: +column
+                    });
+                    $('#result').append($(`
+                        <tr>
+                            <td>${line}:${column}</td><td> ==> </td><td>${result.source}</td><td>${result.line}</td><td>${result.column}</td><td>${result.name}</td>
+                        </tr>
+                    `));
+                });
+            };
+            fileReader.readAsText(file);
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
